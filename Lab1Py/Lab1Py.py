@@ -1,5 +1,5 @@
 import copy
-def input_str(message):  #функція не використовується (введення тексту у консоль, а не в файл)
+def input_str(message):  #отримання тексту з консолі
     print(message)
     text=[]
     line=input()
@@ -54,10 +54,11 @@ def list_to_string(text): #перетворення списку у рядки, зі збереженням Enter'рів
             str_text=str_text+" ".join(line)+"\n"
     return str_text
 
-#text=input_str("Write your text in the console below \nLeave console line blank and press \"Enter\" to finish")
-n=int(input("Write number of repetitions: "))
 path1='oldFile.txt' #початковий файл
 path2='newFile.txt' #кінцевий файл
+text=input_str("Write your text in the console below \nLeave console line blank and press \"Enter\" to finish")
+n=int(input("Write number of repetitions: "))
+write_text_to_file(path1, list_to_string(text))
 text=read_text_from_file(path1)
 text=list_to_string(sort(N_times(text, n)))
 #print(text)
