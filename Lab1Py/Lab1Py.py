@@ -60,7 +60,7 @@ path1='oldFile.txt' #початковий файл
 path2='newFile.txt' #кінцевий файл
 text=read_text_from_file(path1)
 text=list_to_string(sort(N_times(text, n)))
-print(text)
-write_text_to_file(path2,text)
+#print(text)
+write_text_to_file(path2,text) 
 
 
