@@ -3,7 +3,7 @@ def input_str(message):  #отримання тексту з консолі
     print(message)
     text=""
     line=input()
-    while line:
+    while line!="\x18":
         text = text+ line+"\n" 
         line=input()
     return text
@@ -58,12 +58,12 @@ def list_to_string(text): #перетворення списку у рядки, зі збереженням Enter'рів
 
 path1='oldFile.txt' #початковий файл
 path2='newFile.txt' #кінцевий файл
-text=input_str("Write your text in the console below \nLeave console line blank and press \"Enter\" to finish")
+text=input_str("Write your text in the console below \nPress Ctrl+x and then \"Enter\" to finish")
 n=int(input("Write number of repetitions: "))
 write_text_to_file(path1, text)
 text=read_text_from_file(path1)
 text=list_to_string(sort(N_times(text, n)))
-#print(text)
+print(text)
 write_text_to_file(path2,text) 
 
 
