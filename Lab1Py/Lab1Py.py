@@ -24,16 +24,19 @@ def read_text_from_file(path): #зчитування тексту з файлу там перетворення рядкі
 
 def N_times(text, n): #повертає список з словами, що повторюються більше n разів
     repeated_words=[] #список що зберігає слова, які повторюються
+    not_repeated_words=[] #список що зберігає слова, які не повторюються
     for line in text:
         for word in line:
-            if word.lower() not in repeated_words:
+            if word.lower() not in repeated_words and word.lower() not in not_repeated_words:
                 num_of_repeats=0
                 for line_cur in text:
-                    for word_c in line_cur:
-                        if word_c.lower()==word.lower():
+                    for word_cur in line_cur:
+                        if word_cur.lower()==word.lower():
                             num_of_repeats+=1                  
                 if num_of_repeats>n:
                     repeated_words.append(word.lower())
+                else:
+                    not_repeated_words.append(word.lower())
     return repeated_words   
 
 def sort(text): #сортування списку за довжиною
