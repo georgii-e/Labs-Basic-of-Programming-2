@@ -1,4 +1,3 @@
-import copy
 def input_str(message):  #отримання тексту з консолі
     print(message)
     text=""
