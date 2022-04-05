@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="func.cpp" />
     <ClCompile Include="Lab3C++.cpp" />
+    <ClCompile Include="point.cpp" />
     <ClCompile Include="tetr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="func.h" />
     <ClInclude Include="Lab3C++.h" />
+    <ClInclude Include="point.h" />
     <ClInclude Include="tetr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

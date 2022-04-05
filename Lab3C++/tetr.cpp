@@ -1,49 +1,14 @@
 #include "tetr.h"
+#include "point.h"
 #include <iostream>
 #include <iomanip>
 #include <vector>
 using namespace std;
 
-const int tetrahedron::max = receiveMax();
-const int tetrahedron::min = receiveMin();
-int tetrahedron::count = 0;
 
-tetrahedron::Point::Point(int x, int y, int z)
-{
-    this->x = x;
-    this->y = y;
-    this->z = z;
-}
-void tetrahedron::Point::show() const
-{
-    cout << "X=" << setw(3) << x;
-    cout << "\tY=" << setw(3) << y;
-    cout << "\tZ=" << setw(3) << z << endl;
-}
-void tetrahedron::Point::setX(int x)
-{
-    this->x = x;
-}
-void tetrahedron::Point::setY(int y)
-{
-    this->y = y;
-}
-void tetrahedron::Point::setZ(int z)
-{
-    this->z = z;
-}
-int tetrahedron::Point::getX() const
-{
-    return x;
-}
-int tetrahedron::Point::getY() const
-{
-    return y;
-}
-int tetrahedron::Point::getZ() const
-{
-    return z;
-}
+
+
+
 tetrahedron::tetrahedron()
 {
     A = generation();
@@ -51,13 +16,11 @@ tetrahedron::tetrahedron()
     C = generation();
     D = generation();
     volume = find_volume();
-    count++;
-    id = count;
 }
 void tetrahedron::getInfo()
 {
     cout << endl;
-    cout << "Tetrahedron number: " << getID() << endl;
+    cout << "-------Tetrahedron-------" << endl;
     cout << "Point A:" << endl;
     A.show();
     cout << "Point B:" << endl;
@@ -68,24 +31,14 @@ void tetrahedron::getInfo()
     D.show();
     printf("Volume: %.2f\n", volume);
 }
-int tetrahedron::getMax() const
-{
-    return max;
-}
-int tetrahedron::getMin() const
-{
-    return min;
-}
-int tetrahedron::getID() const
-{
-    return id;
-}
 float tetrahedron::getVolume()
 {
     return volume;
 }
-tetrahedron::Point tetrahedron::generation()
+Point tetrahedron::generation()
 {
+    const int max = 9;
+    const int min = -9;
     Point point{ rand() % (max - min + 1) + min,rand() % (max - min + 1) + min ,rand() % (max - min + 1) + min };
     return point;
 }
@@ -115,56 +68,4 @@ float tetrahedron::find_volume()
     float volume = abs(determinant) / 6.;
     return volume;
 }
-void tetrahedron::resetCount()
-{
-    count = 0;
-}
-int tetrahedron::receiveMax()
-{
-    int max = 9;
-    cout << "Input max: ";
-    cin >> max;
-    return max;
-}
-int tetrahedron::receiveMin()
-{
-    int min = -9;
-    cout << "Input min: ";
-    cin >> min;
 
-    return min;
-}
-
-tetrahedron* gen_arr(int SIZE)
-{
-    tetrahedron* p_arr = new tetrahedron[SIZE];
-    tetrahedron::resetCount(); //щоб могло бути декілька масивів
-    for (int i = 0; i < SIZE; i++)
-    {
-        p_arr[i] = tetrahedron();
-    }
-    return p_arr;
-}
-void remove(tetrahedron* p_arr)
-{
-    delete[] p_arr;
-}
-float max(tetrahedron* p_arr, int length, int* id)
-{
-    float max_value = 0;
-    for (int i = 0; i < length; i++)
-    {
-        if (p_arr[i].getVolume() > max_value)
-        {
-            max_value = p_arr[i].getVolume();
-            *id = p_arr[i].getID();
-        }
-    }
-    printf("\nMaximum volume: %.2f have tetrahedron number: %d\n", max_value, *id);
-    return max_value;
-}
-void output(tetrahedron* p_arr, int length)
-{
-    for (int i = 0; i < length; i++)
-        p_arr[i].getInfo();
-}

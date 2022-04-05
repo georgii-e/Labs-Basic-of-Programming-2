@@ -2,12 +2,15 @@
 //
 
 #include <iostream>
+#include "point.h"
 #include "tetr.h"
+#include "func.h"
+
 using namespace std;
 
 
 int main()
-{   setlocale(LC_ALL, "ru");
+{   setlocale(LC_ALL, "ua");
     srand(time(NULL));
     cout << "Input size of array: ";
     int SIZE, id_of_tetr;
