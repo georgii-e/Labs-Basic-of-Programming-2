@@ -24,8 +24,8 @@ def read_text_from_file(path): #зчитування тексту з файлу та перетворення рядків
     return text
 
 def N_times(text, n): #повертає список з словами, що повторюються більше n разів
-    repeated_words=[] #список що зберігає слова, які повторюються
-    not_repeated_words=[] #список що зберігає слова, які не повторюються
+    repeated_words=[] #список що зберігає слова, що повторюються
+    not_repeated_words=[] #список що зберігає слова, що не повторюються
     for line in text:
         for word in line:
             if word.lower() not in repeated_words and word.lower() not in not_repeated_words:
