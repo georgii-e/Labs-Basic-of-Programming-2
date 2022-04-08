@@ -70,7 +70,7 @@ date::date(int day, string month, int year)
         this->month = 11;
     else if (month == "december")
         this->month = 12;
-    else 
+    else
         this->month = 12;
 }
 date::date(string date)
