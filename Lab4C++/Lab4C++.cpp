@@ -18,15 +18,18 @@ public:
     int get_month();
     int get_year();
     void print_info();
+    string get_season();
 };
+date input();
 
 int main()
 {
-    date p("12/12/1222");
-    date e(9, "april", 2004);
-    e.print_info();
-
-
+    date D1 = input();
+    D1.print_info();
+    date D2 = input();
+    D2.print_info();
+    date D3 = input();
+    D3.print_info();
 }
 
 date::date(int day, int month, int year)
@@ -39,6 +42,10 @@ date::date(int day, string month, int year)
 {
     this->day = day;
     this->year = year;
+    for(auto &c:month)
+    {
+        c = tolower(c);
+    }
     if (month == "january")
         this->month = 1;
     else if (month == "february")
@@ -86,6 +93,57 @@ int date::get_year()
 }
 void date::print_info()
 {
-    printf("%02i.%02i.%04i", get_day(), get_month(), get_year());
+    printf("%02i.%02i.%04i\n", get_day(), get_month(), get_year());
 }
-//verify
+string date::get_season()
+{
+    return "f";
+}
+
+
+date input()
+{
+    int mode;
+    cout << "You can input date in format day=xx, month=xx, year=xxxx, or" << endl;
+    cout << "xx/xx/xxxx, or day=xx, month='*******', year=xxxx, choose 1, 2 or 3" << endl;
+    cin >> mode;
+    int day, month, year;
+    string month_str, date_str;
+    date D1;
+    switch (mode)
+    {
+    case 1:
+    {
+        cout << "Input day: ";
+        cin >> day;
+        cout << "Input month: ";
+        cin >> month;
+        cout << "Input year: ";
+        cin >> year;
+        date A(day, month, year);
+        return A;
+    }
+    case 2:
+    {
+        cout << "Input date: ";
+        cin >> date_str;
+        date A(date_str);
+        return A;
+    }
+    case 3:
+    {
+        cout << "Input day: ";
+        cin >> day;
+        cout << "Input month (word): ";
+        cin >> month_str;
+        cout << "Input year: ";
+        cin >> year;
+        date A(day, month_str, year);
+        return A;
+    }
+    default:
+        cout << "Incorrect mode" << endl;
+        date A;
+        return A;
+    }
+}
