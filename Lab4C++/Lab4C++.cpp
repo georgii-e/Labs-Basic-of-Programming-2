@@ -97,7 +97,7 @@ void date::print_info()
 }
 string date::get_season()
 {
-    return "f";
+    return "not done";
 }
 
 
