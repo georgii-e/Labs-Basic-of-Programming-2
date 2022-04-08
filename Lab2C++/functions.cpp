@@ -93,7 +93,7 @@ void winter_chedule(string path1, string path2)
 		departure_time = train_.departure_time;
 		pos = departure_time.find(':');
 		time = stoi(departure_time.erase(pos, 3));
-		if (time < 10 or time>18)
+		if (time < min_time or time>max_time)
 		{
 			write_in_file(path2, train_);
 		}

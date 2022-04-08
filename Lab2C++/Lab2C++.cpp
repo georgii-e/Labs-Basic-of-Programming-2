@@ -14,12 +14,6 @@
 using namespace std;
 
 
-
-
-
-
-
-
 int main()
 {
 	string path1 = "summer.bin";
