@@ -11,11 +11,13 @@ def write_text_to_file(path, text): #запис тексту у файл
     with open(path,'wt') as text_in_file:
         text_in_file.write(text)
 
-def read_text_from_file(path): #зчитування тексту з файлу там перетворення рядків на список
+def read_text_from_file(path): #зчитування тексту з файлу та перетворення рядків на список
     text=[]
+    print("\nYou input:")
     with open(path,'rt', encoding='utf-8') as text_from_file:
         while True:
             line=text_from_file.readline()
+            print(line, end= '')
             if not line:
                 break
             text.append(line.replace(',', ' ').replace('.', ' ').strip('\n ').split())
@@ -52,7 +54,7 @@ n=int(input("Write number of repetitions: "))
 write_text_to_file(path1, text)
 text=read_text_from_file(path1)
 text=(sort(N_times(text, n)))
-print(text)
+print("\nSorted words\n", text)
 write_text_to_file(path2,text) 
 
 
