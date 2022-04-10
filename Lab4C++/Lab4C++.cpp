@@ -20,14 +20,18 @@ public:
     int get_year();
     void print_info();
     void print_season();
+    int julian_day(int day, int month, int year); //amount of days from January 1, 4713 B.C. uh
     date operator += (int value);
+    int operator - (const date& other);
 };
+
 date input();
 bool verify_day(int day);
 bool verify_month(int month);
 bool verify_month(string month);
 bool verify_year(int year);
 bool verify_date_str(string date);
+
 
 int main()
 {
@@ -48,6 +52,7 @@ int main()
     D3 += days;
     cout << "\nD3: ";
     D3.print_info();
+    cout << "D1-D2= " << D1 - D2 << " days" << endl;
 
 }
 
@@ -127,6 +132,15 @@ void date::print_season()
     else
         cout << "It's autumn now" << endl;
 }
+int date::julian_day(int day, int month, int year)
+{
+    //https://ru.wikipedia.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B0%D1%82%D0%B0
+    int a = ((14 - month) / 12);
+    int y = year + 4800 - a;
+    int m = month + 12 * a - 3;
+    int julian_day = day + int((153 * m + 2) / 5) + 365 * y + int(y / 4) - int(y / 100) + int(y / 400) - 32045;
+    return julian_day;
+}
 date date::operator += (int value)
 {
     int days_per_month[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -145,6 +159,10 @@ date date::operator += (int value)
         }
     }
     return *this;
+}
+int date::operator - (const date& other)
+{
+    return julian_day(day, month, year) - julian_day(other.day, other.month, other.year);
 }
 
 date input()
@@ -301,3 +319,4 @@ bool verify_date_str(string date)
         return false;
     }
 }
+
