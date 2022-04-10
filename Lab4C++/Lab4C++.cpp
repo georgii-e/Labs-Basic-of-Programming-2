@@ -18,7 +18,7 @@ public:
     int get_month();
     int get_year();
     void print_info();
-    string get_season();
+    void print_season();
 };
 date input();
 
@@ -30,6 +30,7 @@ int main()
     D2.print_info();
     date D3 = input();
     D3.print_info();
+    D3.print_season();
 }
 
 date::date(int day, int month, int year)
@@ -108,9 +109,16 @@ void date::print_info()
 {
     printf("\n%02i.%02i.%04i\n", get_day(), get_month(), get_year());
 }
-string date::get_season()
+void date::print_season()
 {
-    return "not done";
+    if (month <= 2 or month == 12)
+        cout << "It's winter now" << endl;
+    else if (month >= 3 or month <= 5)
+        cout << "It's spring now" << endl;
+    else if (month >= 6 or month <= 9)
+        cout << "It's summer now" << endl;
+    else
+        cout << "It's autumn now" << endl;
 }
 
 
@@ -121,6 +129,7 @@ date input()
     cout << "1:   day=xx, month=xx, year=xxxx" << endl;
     cout << "2:   xx/xx/xxxx (xx.xx.xxxx)" << endl;
     cout << "3:   day=xx, month='*******', year=xxxx" << endl;
+    cout << "Choose mode: ";
     cin >> mode;
     int day, month, year;
     string month_str, date_str;
