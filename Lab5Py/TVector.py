@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 from abc import abstractclassmethod
 
 class TVector(ABC):
+    def __init__(self):
+        super().__init__()
     @abstractmethod
     def get_length():
         pass
