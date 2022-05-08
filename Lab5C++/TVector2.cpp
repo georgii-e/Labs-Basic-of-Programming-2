@@ -1,6 +1,6 @@
 #include "TVector2.h"
 #include<math.h>
-TVector2::TVector2(float x=0, float y=0)
+TVector2::TVector2(float x, float y)
 {
 	this->x = x;
 	this->y = y;
