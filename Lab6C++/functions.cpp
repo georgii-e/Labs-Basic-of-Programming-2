@@ -4,9 +4,11 @@
 #include <iostream>
 
 vector<pair<string, int>> count_words(vector <string> words)
-/*створення спочатку контейнера типу map для зберігання пар типу слово - кількість повторень,
-що також дозволить автоматично запобігти потраплянню однаких слів у контейнер декількох разів,
-а потім перетворення його у вектор пар для можливості сортування за кількістю повторень. */
+/* 
+first create a container of type map to store pairs with type: word  - the number of repetitions,
+which will also automatically prevent the same words from entering the container multiple times,
+and then converting it to a vector of pairs to be able to sort it by the number of repetitions.
+*/
 {
     map <string, int> words_count;
     for (string word : words)
