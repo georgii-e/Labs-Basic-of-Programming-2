@@ -33,12 +33,6 @@ Node* Tree::makeTree(vector<string> data)
         curr_node = st.front();
         i++;
     }
-	/*if (num == 0) return NULL;
-	Node* node = new Node(data[word_index]);
-	int num_left = num / 2;
-	int num_right = num - num_left - 1;
-	node->left = makeTree(data, word_index + 1, num_left);
-	node->right = makeTree(data, word_index + num_left + 1, num_left);*/
 	return root;
 }
 
